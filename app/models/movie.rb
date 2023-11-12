@@ -10,6 +10,8 @@ class Movie < ApplicationRecord
   has_many :characterizations, dependent: :destroy
   has_many :genres, through: :characterizations
 
+  has_one_attached :main_image
+
   validates :title, :released_on, :duration, presence: true
   validates :title, uniqueness: true
 
@@ -24,11 +26,6 @@ class Movie < ApplicationRecord
   scope :flops, -> { released.where("total_gross < 225000000").order(total_gross: :asc) }
   scope :grossed_less_than, ->(amount) { released.where("total_gross < ?", amount) }
   scope :grossed_greater_than, ->(amount) { released.where("total_gross > ?", amount) }
-
-  validates :image_file_name, format: {
-    with: /\w+\.(jpg|png)\z/i,
-    message: "must be a JPG or PNG image"
-  }
 
   RATINGS = %w(G PG PG-13 R NC-17)
 
