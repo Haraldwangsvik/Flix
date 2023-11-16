@@ -82,3 +82,5 @@ end
 group :production do 
   gem 'pg'
 end
+
+gem "appengine", "~> 0.7.0"
