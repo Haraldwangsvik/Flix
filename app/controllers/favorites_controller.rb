@@ -5,6 +5,9 @@ class FavoritesController < ApplicationController
   def create
     @movie.favorites.create!(user: current_user)
 
+    # or append to the through association
+    # @movie.fans << current_user
+
     redirect_to @movie
   end
 
@@ -15,9 +18,10 @@ class FavoritesController < ApplicationController
     redirect_to @movie
   end
 
-  private 
+private
 
-    def set_movie
-      @movie = Movie.find_by!(slug: params[:movie_id])
-    end
+  def set_movie
+    @movie = Movie.find_by!(slug: params[:movie_id])
+  end
+
 end

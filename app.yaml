@@ -1,9 +1,0 @@
-entrypoint: bundle exec rackup --port $PORT
-env: flex
-runtime: ruby
-
-env_variables:
-  SECRET_KEY_BASE: ac4f91a23149c1a7f69faf25b6e0f374a390ede220f62276c8b8cc101e385fbd1642ae93c0496e31ae19e2f50b9c5a4fb77f7cde473e47394cb1d253c8418493
-
-beta_settings:
-  cloud_sql_instances: flix-405322:europe-west2:flix-postgresql
